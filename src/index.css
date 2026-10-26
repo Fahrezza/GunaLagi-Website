@@ -1,9 +1,15 @@
+
 @import url("https://fonts.googleapis.com/css2?family=Outfit:wght@600;700&family=Inter:wght@400;500;600&display=swap");
 @import "tailwindcss";
 
 @theme {
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-display: "Outfit", "Inter", sans-serif;
+
   --color-lime-brand: #bcff5c;
   --color-lime-brand-dark: #a6ee3e;
+
+  --color-forest: #0f2d1e;
+  --color-lime-soft: #f6ffe6;
+  --color-lime-edge: #c9f08a;
 }
