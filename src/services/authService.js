@@ -4,7 +4,7 @@ const SESSION_KEY = "user";
 const demoUser = {
   nama: "Cakrawala",
   email: "cakrawala@gunalagi.com",
-  username: "cakrawalateam,",
+  username: "cakrawalateam",
   password: "akundemocakrawala01",
 };
 
