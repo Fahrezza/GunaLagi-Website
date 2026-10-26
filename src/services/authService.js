@@ -2,10 +2,10 @@ const USERS_KEY = "users";
 const SESSION_KEY = "user";
 
 const demoUser = {
-  nama: "Pengguna Demo",
-  email: "demo@gunalagi.com",
-  username: "demo",
-  password: "demo123",
+  nama: "Cakrawala",
+  email: "cakrawala@gunalagi.com",
+  username: "cakrawalateam,",
+  password: "akundemocakrawala01",
 };
 
 const read = (key, fallback) => {
