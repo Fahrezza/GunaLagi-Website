@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import BarangCard from "../BarangCard.jsx";
 import GatedLink from "../GatedLink.jsx";
 
-export default function RekomendasiSection({ items, kataKunci, sectionRef }) {
+export default function RekomendasiSection({ items, kataKunci, sectionRef, kartuHover = false }) {
   const tampil = kataKunci ? items : items.slice(0, 6);
 
   return (
@@ -25,7 +25,7 @@ export default function RekomendasiSection({ items, kataKunci, sectionRef }) {
         <div className="grid grid-cols-1 justify-items-center gap-x-3 gap-y-5 sm:grid-cols-3 sm:gap-x-6 sm:gap-y-8 lg:gap-x-10">
           {tampil.map((b) => (
             <div key={b.id} className="w-full max-w-[280px]">
-              <BarangCard barang={b} />
+              <BarangCard barang={b} hover={kartuHover} />
             </div>
           ))}
         </div>
