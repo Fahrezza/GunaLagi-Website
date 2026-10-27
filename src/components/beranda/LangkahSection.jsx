@@ -40,7 +40,7 @@ export default function LangkahSection() {
       </div>
 
       <div className="mt-8">
-        <ActionButton to="/bagikan" perluLogin>Mulai Sekarang</ActionButton>
+        <ActionButton to="/beranda" perluLogin>Mulai Sekarang</ActionButton>
       </div>
     </section>
   );

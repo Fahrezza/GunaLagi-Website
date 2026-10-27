@@ -87,7 +87,7 @@ export default function Navbar() {
               <Link to="/login" className="text-xs font-semibold underline-offset-4 hover:underline">
                 Log In
               </Link>
-              <ActionButton to="/bagikan" perluLogin size="sm">Mulai Sekarang</ActionButton>
+              <ActionButton to="/beranda" perluLogin size="sm">Mulai Sekarang</ActionButton>
             </>
           )}
         </div>

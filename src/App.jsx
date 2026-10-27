@@ -25,7 +25,7 @@ export default function App() {
       <Route path="/pesan" element={terkunci(<BelumDibuat judul="Halaman Pesan" />)} />
       <Route path="/bagikan" element={terkunci(<BelumDibuat judul="Halaman Bagikan Barang" />)} />
       <Route path="/akun" element={terkunci(<BelumDibuat judul="Halaman Akun" />)} />
-      <Route path="/pengaturan" element={terkunci(<BelumDibuat judul="Halaman Pengaturan Akun" />)} />
+      <Route path="/permintaan" element={terkunci(<BelumDibuat judul="Halaman Permintaan Barang" />)} />
       <Route path="/kategori/:slug" element={terkunci(<BelumDibuat />)} />
 
       <Route path="*" element={<Navigate to="/" replace />} />

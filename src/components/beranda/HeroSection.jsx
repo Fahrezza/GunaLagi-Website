@@ -14,7 +14,7 @@ export default function HeroSection({ onLihatBarang }) {
             donasikan, atau tukar dengan barang lain. Mari kurangi sampah, bantu sesama.
           </p>
           <div className="mt-6 flex flex-wrap gap-3">
-            <ActionButton to="/bagikan" perluLogin>Mulai Sekarang - Gratis</ActionButton>
+            <ActionButton to="/beranda" perluLogin>Mulai Sekarang - Gratis</ActionButton>
             <ActionButton variant="white" onClick={onLihatBarang}>Lihat Barang</ActionButton>
           </div>
         </div>
