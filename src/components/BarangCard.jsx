@@ -1,8 +1,13 @@
-export default function BarangCard({ barang }) {
+export default function BarangCard({ barang, hover = false }) {
   const { pemilik, kota, nama, kategori, deskripsi, foto } = barang;
+  const efek = hover
+    ? " transition hover:border-neutral-400 hover:bg-neutral-50 hover:shadow-lg"
+    : "";
 
   return (
-    <article className="flex flex-col rounded-xl border border-neutral-200 bg-white p-2.5 shadow-sm sm:p-3">
+    <article
+      className={`flex flex-col rounded-xl border border-neutral-200 bg-white p-2.5 shadow-sm sm:p-3${efek}`}
+    >
       <header className="mb-2 flex items-center gap-2">
         <span className="h-6 w-6 shrink-0 rounded-full bg-neutral-200" aria-hidden="true" />
         <div className="leading-tight">

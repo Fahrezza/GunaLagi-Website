@@ -22,7 +22,7 @@ export default function Register() {
   const navigate = useNavigate();
   const location = useLocation();
   const [formError, setFormError] = useState("");
-  const tujuan = location.state?.from ?? "/";
+  const tujuan = location.state?.from ?? "/beranda";
 
   const { values, errors, handleChange, handleSubmit } = useForm(
     { nama: "", email: "", username: "", password: "", konfirmasi: "", setuju: false },
