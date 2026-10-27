@@ -20,7 +20,7 @@ export default function Login() {
   const [formError, setFormError] = useState("");
 
   // Halaman yang tadi dituju pengunjung. Kalau tidak ada, ke Beranda.
-  const tujuan = location.state?.from ?? "/";
+  const tujuan = location.state?.from ?? "/beranda";
 
   const { values, errors, handleChange, handleSubmit } = useForm(
     { identifier: "", password: "", remember: false },
