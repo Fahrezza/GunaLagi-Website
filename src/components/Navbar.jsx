@@ -54,7 +54,7 @@ export default function Navbar() {
 
         <KolomCari key={awal} awal={awal} />
 
-        <nav className="flex items-center gap-6" aria-label="Menu utama">
+        <nav className="flex items-center gap-6 md:ml-6 md:gap-12 lg:ml-10 lg:gap-16" aria-label="Menu utama">
           {menu.map((m) => (
             <NavLink key={m.to} to={m.to} end={m.to === "/"} className={kelasMenu}>
               {m.label}
