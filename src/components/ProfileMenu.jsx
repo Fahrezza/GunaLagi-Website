@@ -44,7 +44,11 @@ export default function ProfileMenu({ user }) {
         aria-haspopup="menu"
         aria-expanded={buka}
         aria-label="Menu akun"
-        className="flex items-center gap-2 rounded-full border border-forest bg-lime-soft py-1 pl-1 pr-3 transition hover:bg-lime-brand/40 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest"
+        className={`flex items-center gap-2 rounded-full border py-1 pl-1 pr-3 transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest ${
+          buka
+            ? "border-forest bg-lime-soft"
+            : "border-transparent bg-transparent hover:bg-neutral-100 active:border-forest active:bg-lime-soft"
+        }`}
       >
         <span className="flex h-8 w-8 items-center justify-center overflow-hidden rounded-full bg-neutral-300 text-sm font-semibold text-neutral-700">
           {user?.picture ? (
