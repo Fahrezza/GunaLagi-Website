@@ -1,4 +1,5 @@
 import { Routes, Route, Navigate } from "react-router-dom";
+import ViewportAtur from "./components/ViewportAtur.jsx";
 import Beranda from "./pages/Beranda.jsx";
 import BerandaAuth from "./pages/BerandaAuth.jsx";
 import Login from "./pages/Login.jsx";
@@ -11,7 +12,9 @@ const terkunci = (halaman) => <ProtectedRoute>{halaman}</ProtectedRoute>;
 
 export default function App() {
   return (
-    <Routes>
+    <>
+      <ViewportAtur />
+      <Routes>
       {/* Hanya untuk pengunjung: kalau sudah login, dialihkan ke /beranda */}
       <Route path="/" element={<GuestRoute><Beranda /></GuestRoute>} />
       <Route path="/login" element={<GuestRoute><Login /></GuestRoute>} />
@@ -31,5 +34,6 @@ export default function App() {
 
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
+    </>
   );
 }

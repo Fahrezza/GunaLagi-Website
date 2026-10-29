@@ -49,7 +49,7 @@ export default function Login() {
         <InputField label="Kata Sandi" name="password" type="password" placeholder="••••••••"
           value={values.password} onChange={handleChange} error={errors.password} />
 
-        <div className="mb-5 flex items-center justify-between text-xs">
+        <div className="mb-3 flex items-center justify-between text-xs sm:mb-5">
           <label className="flex items-center gap-2">
             <input type="checkbox" name="remember" checked={values.remember} onChange={handleChange} />
             Remember me
@@ -67,7 +67,7 @@ export default function Login() {
         </div>
       </form>
 
-      <p className="mt-4 text-xs text-neutral-600">
+      <p className="mt-3 text-xs text-neutral-600 sm:mt-4">
         Belum memiliki akun?{" "}
         {/* state diteruskan supaya tujuan awal tidak hilang saat pindah ke Daftar */}
         <Link to="/daftar" state={location.state} className="font-semibold underline">

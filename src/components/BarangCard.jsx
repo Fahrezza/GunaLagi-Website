@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 export default function BarangCard({ barang, hover = false }) {
   const { id, pemilik, kota, nama, kategori, deskripsi, foto } = barang;
   const efek = hover
-    ? " hover:border-neutral-400 hover:bg-neutral-50 hover:shadow-lg"
+    ? " hover:border-neutral-400 hover:bg-neutral-50 hover:shadow-lg active:bg-neutral-50"
     : "";
 
   return (

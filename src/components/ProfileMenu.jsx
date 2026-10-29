@@ -21,10 +21,10 @@ export default function ProfileMenu({ user }) {
       if (e.key === "Escape") setBuka(false);
     };
 
-    document.addEventListener("mousedown", klikLuar);
+    document.addEventListener("pointerdown", klikLuar);
     document.addEventListener("keydown", tekanEsc);
     return () => {
-      document.removeEventListener("mousedown", klikLuar);
+      document.removeEventListener("pointerdown", klikLuar);
       document.removeEventListener("keydown", tekanEsc);
     };
   }, [buka]);

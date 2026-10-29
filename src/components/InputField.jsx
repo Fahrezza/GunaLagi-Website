@@ -5,8 +5,8 @@ export default function InputField({ label, name, type = "text", error, ...props
   const isPassword = type === "password";
 
   return (
-    <div className="mb-4">
-      <label htmlFor={name} className="block text-xs font-semibold mb-1.5">
+    <div className="mb-2.5 sm:mb-4">
+      <label htmlFor={name} className="mb-1 block text-[11px] font-semibold sm:mb-1.5 sm:text-xs">
         {label}
       </label>
       <div className="relative">
@@ -15,7 +15,7 @@ export default function InputField({ label, name, type = "text", error, ...props
           name={name}
           type={isPassword && show ? "text" : type}
           aria-invalid={Boolean(error)}
-          className={`w-full rounded-lg border px-3 py-2.5 text-sm outline-none transition focus:ring-2 focus:ring-lime-brand ${
+          className={`w-full rounded-lg border px-3 py-1.5 text-base leading-5 outline-none transition focus:ring-2 focus:ring-lime-brand sm:py-2.5 md:text-sm ${
             error ? "border-red-500" : "border-neutral-300"
           }`}
           {...props}

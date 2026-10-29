@@ -68,13 +68,13 @@ export default function Register() {
           <p className="mt-3 text-xs text-red-600" role="alert">{formError}</p>
         )}
 
-        <div className="mt-5 space-y-2">
+        <div className="mt-3 space-y-2 sm:mt-5">
           <Button type="submit">Daftar Sekarang</Button>
           <GoogleButton onSuccess={handleGoogle}>Sign Up with Google</GoogleButton>
         </div>
       </form>
 
-      <p className="mt-4 text-xs text-neutral-600">
+      <p className="mt-3 text-xs text-neutral-600 sm:mt-4">
         Sudah punya akun?{" "}
         <Link to="/login" state={location.state} className="font-semibold underline">Login.</Link>
       </p>

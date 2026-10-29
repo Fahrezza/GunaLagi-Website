@@ -4,6 +4,15 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      // Di ponsel, tampilkan tata letak desktop (sesuai Figma) yang diperkecil.
+      (function () {
+        var sisiPendek = Math.min(screen.width, screen.height);
+        var p = location.pathname; if (sisiPendek < 768 && (p === "/" || p === "/beranda")) {
+          document.querySelector('meta[name="viewport"]').setAttribute("content", "width=1152");
+        }
+      })();
+    </script>
     <title>gunalagi-website</title>
   </head>
   <body>

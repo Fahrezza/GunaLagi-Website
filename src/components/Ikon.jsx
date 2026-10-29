@@ -89,3 +89,18 @@ export const IkonPanah = (props) => (
     <path d="m6 9 6 6 6-6" />
   </svg>
 );
+export const IkonMenu = (props) => (
+  <svg {...dasar} {...props}>
+    <path d="M4 6h16" />
+    <path d="M4 12h16" />
+    <path d="M4 18h16" />
+  </svg>
+);
+
+export const IkonTutup = (props) => (
+  <svg {...dasar} {...props}>
+    <path d="M18 6 6 18" />
+    <path d="m6 6 12 12" />
+  </svg>
+);
+

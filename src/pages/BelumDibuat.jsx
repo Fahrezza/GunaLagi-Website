@@ -11,7 +11,7 @@ export default function BelumDibuat({ judul }) {
   const kembali = getSession() ? "/beranda" : "/";
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center gap-4 bg-black px-6 text-center text-white">
+    <main className="flex min-h-dvh flex-col items-center justify-center gap-4 bg-black px-6 text-center text-white">
       <h1 className="font-display text-2xl font-bold sm:text-3xl">{nama} belum dibuat</h1>
       <p className="max-w-md text-sm text-neutral-300">Halaman ini masih dalam pengerjaan.</p>
       <Link
