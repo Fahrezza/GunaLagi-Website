@@ -19,7 +19,7 @@ export default function FilterStatus({ aktif, onUbah }) {
             className={`rounded-full border border-forest px-4 py-1.5 text-xs font-semibold transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest ${
               dipilih
                 ? "bg-forest text-white"
-                : "bg-white text-forest hover:bg-lime-soft active:bg-lime-soft"
+                : "bg-white text-forest hover:bg-lime-soft"
             }`}
           >
             {p.label}

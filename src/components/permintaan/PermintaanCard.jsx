@@ -9,11 +9,11 @@ const warnaStatus = {
 };
 
 const dasar =
-  "inline-flex items-center justify-center gap-2 rounded-lg px-3 py-2 text-xs font-semibold sm:px-4 sm:py-2.5 sm:text-sm transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest disabled:cursor-not-allowed disabled:opacity-60";
+  "inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2.5 text-sm font-semibold transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest disabled:cursor-not-allowed disabled:opacity-60";
 const gaya = {
-  lime: "bg-lime-brand text-neutral-950 hover:bg-forest hover:text-white active:bg-forest active:text-white",
-  gelap: "bg-forest text-white hover:bg-neutral-900 active:bg-neutral-900",
-  garis: "border border-neutral-400 bg-white text-neutral-900 hover:bg-neutral-100 active:bg-neutral-100",
+  lime: "bg-lime-brand text-neutral-950 hover:bg-forest hover:text-white",
+  gelap: "bg-forest text-white hover:bg-neutral-900",
+  garis: "border border-neutral-400 bg-white text-neutral-900 hover:bg-neutral-100",
 };
 
 function Thumb({ foto, nama, kecil = false }) {
@@ -100,7 +100,7 @@ export default function PermintaanCard({ permintaan, onUbahStatus, sibuk = false
 
   return (
     <article className="overflow-hidden rounded-xl border border-neutral-300 bg-white shadow-sm">
-      <header className="flex items-center justify-between gap-3 p-3 sm:p-4">
+      <header className="flex items-center justify-between gap-3 p-4">
         <div className="flex min-w-0 items-center gap-3">
           <Thumb foto={barang.foto} nama={barang.nama} />
           <div className="min-w-0 leading-tight">
@@ -120,7 +120,7 @@ export default function PermintaanCard({ permintaan, onUbahStatus, sibuk = false
         </div>
       </header>
 
-      <div className="space-y-3 border-t border-neutral-300 bg-neutral-100 p-3 sm:p-4">
+      <div className="space-y-3 border-t border-neutral-300 bg-neutral-100 p-4">
         <div className="flex items-center justify-between gap-2">
           <h3 className="text-xs font-semibold">Detail Keterangan Permintaan</h3>
           <span className={`rounded-full px-2.5 py-0.5 text-[11px] font-semibold ${warnaStatus[status]}`}>
@@ -135,7 +135,7 @@ export default function PermintaanCard({ permintaan, onUbahStatus, sibuk = false
               <Thumb foto={tawaran.foto} nama={tawaran.nama} kecil />
               <p className="text-base font-semibold">{tawaran.nama}</p>
             </div>
-            <div className="mt-3 grid grid-cols-[1fr_6rem] gap-3 sm:grid-cols-[1fr_9rem]">
+            <div className="mt-3 grid grid-cols-[1fr_9rem] gap-3">
               <div>
                 <p className="text-xs font-semibold">Deskripsi barang</p>
                 <p className="mt-1 text-xs text-neutral-600">{tawaran.deskripsi}</p>
@@ -148,11 +148,11 @@ export default function PermintaanCard({ permintaan, onUbahStatus, sibuk = false
           </div>
         )}
 
-        <div className="min-h-16 whitespace-pre-line sm:min-h-20 rounded-lg border border-neutral-300 bg-neutral-50 p-3 text-xs text-forest">
+        <div className="min-h-20 whitespace-pre-line rounded-lg border border-neutral-300 bg-neutral-50 p-3 text-xs text-forest">
           {pesan}
         </div>
 
-        <div className="flex gap-2 sm:gap-3">{aksi}</div>
+        <div className="flex gap-3">{aksi}</div>
       </div>
     </article>
   );

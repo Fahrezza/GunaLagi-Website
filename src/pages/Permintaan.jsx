@@ -58,9 +58,9 @@ export default function Permintaan() {
   return (
     <>
       <Navbar />
-      <main className="mx-auto w-full max-w-3xl px-4 pb-20 pt-8 sm:px-6 sm:pt-10">
-        <h1 className="font-display text-2xl font-bold text-neutral-950 sm:text-3xl">Permintaan Barang</h1>
-        <p className="mt-1 text-xs text-neutral-600 sm:text-sm">
+      <main className="mx-auto w-full max-w-3xl px-6 pb-20 pt-10">
+        <h1 className="font-display text-3xl font-bold text-neutral-950">Permintaan Barang</h1>
+        <p className="mt-1 text-sm text-neutral-600">
           Kelola permintaan masuk untuk barang-barangmu dan pantau permintaanmu yang terkirim.
         </p>
 

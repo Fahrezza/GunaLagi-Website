@@ -19,10 +19,10 @@ export default function PermintaanTabs({ aktif, onUbah }) {
             role="tab"
             aria-selected={dipilih}
             onClick={() => onUbah(t.id)}
-            className={`rounded-md px-3 py-2 text-xs font-semibold transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest sm:text-sm ${
+            className={`rounded-md px-3 py-2 text-sm font-semibold transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest ${
               dipilih
                 ? "bg-white text-neutral-950 shadow-sm"
-                : "text-neutral-500 hover:text-neutral-800 active:text-neutral-800"
+                : "text-neutral-500 hover:text-neutral-800"
             }`}
           >
             {t.label}
