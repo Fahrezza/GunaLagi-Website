@@ -4,6 +4,7 @@ import BerandaAuth from "./pages/BerandaAuth.jsx";
 import Login from "./pages/Login.jsx";
 import Register from "./pages/Register.jsx";
 import BelumDibuat from "./pages/BelumDibuat.jsx";
+import BagikanBarang from "./pages/BagikanBarang.jsx";
 import Permintaan from "./pages/Permintaan.jsx";
 import ProtectedRoute from "./components/ProtectedRoute.jsx";
 import GuestRoute from "./components/GuestRoute.jsx";
@@ -24,7 +25,7 @@ export default function App() {
       {/* Halaman yang belum dibuat */}
       <Route path="/jelajahi" element={terkunci(<BelumDibuat judul="Halaman Jelajahi" />)} />
       <Route path="/pesan" element={terkunci(<BelumDibuat judul="Halaman Pesan" />)} />
-      <Route path="/bagikan" element={terkunci(<BelumDibuat judul="Halaman Bagikan Barang" />)} />
+      <Route path="/bagikan" element={terkunci(<BagikanBarang />)} />
       <Route path="/akun" element={terkunci(<BelumDibuat judul="Halaman Akun" />)} />
       <Route path="/permintaan" element={terkunci(<Permintaan />)} />
       <Route path="/kategori/:slug" element={terkunci(<BelumDibuat />)} />
