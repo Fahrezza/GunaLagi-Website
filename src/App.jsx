@@ -8,6 +8,7 @@ import BagikanBarang from "./pages/BagikanBarang.jsx";
 import Permintaan from "./pages/Permintaan.jsx";
 import ProtectedRoute from "./components/ProtectedRoute.jsx";
 import GuestRoute from "./components/GuestRoute.jsx";
+import DetailBarang from "./pages/DetailBarang.jsx";
 
 const terkunci = (halaman) => <ProtectedRoute>{halaman}</ProtectedRoute>;
 
@@ -27,10 +28,11 @@ export default function App() {
       <Route path="/pesan" element={terkunci(<BelumDibuat judul="Halaman Pesan" />)} />
       <Route path="/akun" element={terkunci(<BelumDibuat judul="Halaman Akun" />)} />
       <Route path="/kategori/:slug" element={terkunci(<BelumDibuat />)} />
-      <Route path="/barang/:id" element={<BelumDibuat judul="Halaman Deskripsi Barang" />} />
 
       <Route path="/bagikan" element={terkunci(<BagikanBarang />)} />
       <Route path="/permintaan" element={terkunci(<Permintaan />)} />
+      <Route path="/barang/:id" element={<DetailBarang />} />
+      <Route path="/barang/:id/ajukan" element={terkunci(<BelumDibuat judul="Halaman Ajukan Permintaan" />)} />
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );
