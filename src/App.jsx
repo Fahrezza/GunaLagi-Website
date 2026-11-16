@@ -9,6 +9,7 @@ import Permintaan from "./pages/Permintaan.jsx";
 import ProtectedRoute from "./components/ProtectedRoute.jsx";
 import GuestRoute from "./components/GuestRoute.jsx";
 import DetailBarang from "./pages/DetailBarang.jsx";
+import JelajahiBarang from "./pages/JelajahiBarang.jsx";
 
 const terkunci = (halaman) => <ProtectedRoute>{halaman}</ProtectedRoute>;
 
@@ -22,9 +23,7 @@ export default function App() {
 
       {/* Wajib login */}
       <Route path="/beranda" element={terkunci(<BerandaAuth />)} />
-
-      {/* Halaman yang belum dibuat */}
-      <Route path="/jelajahi" element={terkunci(<BelumDibuat judul="Halaman Jelajahi" />)} />
+      <Route path="/jelajahi" element={terkunci(<JelajahiBarang />)} />
       <Route path="/pesan" element={terkunci(<BelumDibuat judul="Halaman Pesan" />)} />
       <Route path="/akun" element={terkunci(<BelumDibuat judul="Halaman Akun" />)} />
       <Route path="/kategori/:slug" element={terkunci(<BelumDibuat />)} />
