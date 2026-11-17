@@ -5,12 +5,12 @@ import InputField from "../components/InputField.jsx";
 import Button from "../components/Button.jsx";
 import GoogleButton from "../components/GoogleButton.jsx";
 import useForm from "../hooks/useForm.js";
-import { login, loginWithGoogle } from "../services/authService.js";
+import { login } from "../services/authService.js";
 
 const validate = (v) => {
   const e = {};
   if (!v.identifier.trim()) e.identifier = "Username atau email wajib diisi";
-  if (v.password.length < 6) e.password = "Kata sandi minimal 6 karakter";
+  if (v.password.length < 8) e.password = "Kata sandi minimal 6 karakter";
   return e;
 };
 
@@ -27,19 +27,23 @@ export default function Login() {
     validate
   );
 
-  const onValid = (v) => {
-    const result = login(v.identifier, v.password);
-    if (!result.ok) {
-      setFormError(result.error);
-      return;
-    }
-    navigate(tujuan, { replace: true });
-  };
+const onValid = async (v) => {
+  setFormError("");
 
-  const handleGoogle = (user) => {
-    loginWithGoogle(user);
-    navigate(tujuan, { replace: true });
-  };
+  const result = await login(
+    v.identifier,
+    v.password
+  );
+
+  if (!result.ok) {
+    setFormError(result.error);
+    return;
+  }
+
+  navigate(tujuan, { replace: true });
+};
+
+
 
   return (
     <AuthCard title="Login ke akun anda">
@@ -63,7 +67,9 @@ export default function Login() {
 
         <div className="space-y-2">
           <Button type="submit">Log In</Button>
-          <GoogleButton onSuccess={handleGoogle}>Log In with Google</GoogleButton>
+          <GoogleButton disabled>
+  Log In with Google
+</GoogleButton>
         </div>
       </form>
 
