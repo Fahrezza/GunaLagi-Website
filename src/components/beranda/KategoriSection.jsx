@@ -22,7 +22,7 @@ export default function KategoriSection() {
           return (
             <Link
               key={k.slug}
-              to={`/kategori/${k.slug}`}
+              to={`/jelajahi?kategori=${k.slug}`}
               className="flex h-full flex-col items-center justify-center rounded-xl border border-neutral-200 bg-neutral-50 px-6 py-8 text-center shadow-md transition hover:border-forest hover:bg-lime-soft focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest"
             >
               <Ikon width={32} height={32} className="text-forest" />

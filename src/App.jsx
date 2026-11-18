@@ -1,5 +1,5 @@
 
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route, Navigate, useParams } from "react-router-dom";
 
 // Pages
 import Beranda from "./pages/Beranda.jsx";
@@ -20,6 +20,12 @@ import GuestRoute from "./components/GuestRoute.jsx";
 const terkunci = (halaman) => (
   <ProtectedRoute>{halaman}</ProtectedRoute>
 );
+
+// Alamat lama /kategori/elektronik dialihkan ke /jelajahi?kategori=elektronik.
+function KategoriKeJelajahi() {
+  const { slug } = useParams();
+  return <Navigate to={`/jelajahi?kategori=${encodeURIComponent(slug)}`} replace />;
+}
 
 export default function App() {
   return (
@@ -89,10 +95,7 @@ export default function App() {
         )}
       />
 
-      <Route
-        path="/kategori/:slug"
-        element={terkunci(<BelumDibuat />)}
-      />
+      <Route path="/kategori/:slug" element={<KategoriKeJelajahi />} />
 
       <Route
         path="/bagikan"
