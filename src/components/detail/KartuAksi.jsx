@@ -24,10 +24,13 @@ export default function KartuAksi({ barang, donasi, milikSendiri }) {
     ? "bg-lime-brand text-neutral-950 hover:bg-lime-brand-dark"
     : "bg-forest text-white hover:bg-neutral-900";
   const tujuanPesan = `/pesan?dengan=${encodeURIComponent(barang.pemilikId ?? barang.pemilik)}`;
+  const tujuanAjukan = donasi
+  ? `/barang/${barang.id}/minta`
+  : `/barang/${barang.id}/barter`;
 
   return (
     <section className="space-y-2 rounded-xl border border-neutral-300 bg-neutral-100 p-3 shadow-sm">
-      <GatedLink to={`/barang/${barang.id}/ajukan`} perluLogin className={`${tombol} ${warna}`}>
+      <GatedLink to={tujuanAjukan} perluLogin className={`${tombol} ${warna}`}>
         {donasi ? "Ajukan Permintaan" : "Ajukan Pertukaran"}
       </GatedLink>
       <GatedLink

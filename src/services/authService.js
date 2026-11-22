@@ -386,3 +386,51 @@ export function logout() {
   localStorage.removeItem(TOKEN_KEY);
   localStorage.removeItem(SESSION_KEY);
 }
+
+// ===== Profil =====
+const P_AKUN = "gunalagi_users";    // SESUAIKAN dengan kunci akun yang ada
+const P_SESI = "gunalagi_session";  // SESUAIKAN dengan kunci sesi yang ada
+
+const bacaJson = (k, d) => {
+  try { return JSON.parse(localStorage.getItem(k)) ?? d; } catch { return d; }
+};
+
+export function getProfil() {
+  const sesi = getSession();
+  if (!sesi) return null;
+  const akun = bacaJson(P_AKUN, []);
+  const i = akun.findIndex((a) => a.email === sesi.email);
+  const a = i >= 0 ? akun[i] : {};
+  let dibuat = a.dibuat || sesi.dibuat;
+  if (!dibuat) {
+    dibuat = new Date().toISOString(); // akun lama diberi tanggal bergabung
+    if (i >= 0) {
+      akun[i] = { ...a, dibuat };
+      localStorage.setItem(P_AKUN, JSON.stringify(akun));
+    }
+    localStorage.setItem(P_SESI, JSON.stringify({ ...sesi, dibuat }));
+  }
+  return {
+    ...sesi,
+    kota: a.kota ?? sesi.kota ?? "",
+    provinsi: a.provinsi ?? sesi.provinsi ?? "",
+    picture: a.picture ?? sesi.picture ?? "",
+    dibuat,
+  };
+}
+
+export async function perbaruiProfil(patch) {
+  const sesi = getSession();
+  if (!sesi) throw new Error("Belum login");
+  const boleh = {};
+  for (const k of ["name", "kota", "provinsi", "picture"]) {
+    if (k in patch) boleh[k] = patch[k];
+  }
+  const akun = bacaJson(P_AKUN, []);
+  const i = akun.findIndex((a) => a.email === sesi.email);
+  if (i >= 0) akun[i] = { ...akun[i], ...boleh };
+  localStorage.setItem(P_AKUN, JSON.stringify(akun));
+  const baru = { ...sesi, ...boleh };
+  localStorage.setItem(P_SESI, JSON.stringify(baru));
+  return baru;
+}

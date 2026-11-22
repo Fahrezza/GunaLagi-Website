@@ -1,3 +1,4 @@
+import { getProfil } from "./authService";
 import { kecilkanGambar } from "../utils/gambar.js";
 import { getSession } from "./authService.js";
 import { CARA } from "../data/opsiBarang.js";
@@ -53,4 +54,11 @@ export async function tambahBarang(data) {
     throw new Error("Penyimpanan browser penuh. Kurangi jumlah foto atau hapus barang lama.");
   }
   return baru;
+}
+export function getBarangSaya() {
+  const p = getProfil();
+  if (!p) return [];
+  return getBarang()
+    .filter((b) => b.pemilikEmail === p.email)
+    .map((b) => ({ ...b, pemilik: p.name, kota: p.kota || b.kota }));
 }

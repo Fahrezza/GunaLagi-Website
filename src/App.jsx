@@ -1,4 +1,3 @@
-
 import { Routes, Route, Navigate, useParams } from "react-router-dom";
 
 // Pages
@@ -11,6 +10,10 @@ import BagikanBarang from "./pages/BagikanBarang.jsx";
 import Permintaan from "./pages/Permintaan.jsx";
 import DetailBarang from "./pages/DetailBarang.jsx";
 import JelajahiBarang from "./pages/JelajahiBarang.jsx";
+import Akun from "./pages/Akun";
+import EditProfil from "./pages/EditProfil";
+import RequestBarter from "./pages/RequestBarter";
+import PermintaanDonasi from "./pages/PermintaanDonasi";
 
 // Route protection
 import ProtectedRoute from "./components/ProtectedRoute.jsx";
@@ -29,6 +32,7 @@ function KategoriKeJelajahi() {
 
 export default function App() {
   return (
+  
     <Routes>
 
       {/* HALAMAN PUBLIK */}
@@ -89,11 +93,8 @@ export default function App() {
       />
 
       <Route
-        path="/akun"
-        element={terkunci(
-          <BelumDibuat judul="Halaman Akun" />
-        )}
-      />
+        path="/akun" 
+        element={terkunci(<Akun />)} />
 
       <Route path="/kategori/:slug" element={<KategoriKeJelajahi />} />
 
@@ -108,11 +109,19 @@ export default function App() {
       />
 
       <Route
-        path="/barang/:id/ajukan"
-        element={terkunci(
-          <BelumDibuat judul="Halaman Ajukan Permintaan" />
-        )}
+      path="/barang/:id/minta"
+      element={terkunci(<PermintaanDonasi />)} 
       />
+      
+      <Route 
+        path="/barang/:id/barter" 
+        element={terkunci
+        (<RequestBarter />)} 
+      />
+
+      <Route 
+        path="/akun/edit" 
+        element={terkunci(<EditProfil />)} />  
 
 
       {/* HALAMAN TIDAK DITEMUKAN */}
