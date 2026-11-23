@@ -52,7 +52,7 @@ export default function BarangCard({ barang, hover = false }) {
           {kategori}
         </p>
 
-        <p className="mt-2 line-clamp-3 text-xs leading-relaxed text-neutral-600">
+        <p className="mt-2 line-clamp-3 min-h-[3lh] text-xs leading-relaxed text-neutral-600">
           {deskripsi}
         </p>
       </div>

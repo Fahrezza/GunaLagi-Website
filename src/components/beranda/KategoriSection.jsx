@@ -11,7 +11,7 @@ const ikonKategori = {
 
 export default function KategoriSection() {
   return (
-    <section className="mx-auto w-full max-w-[1440px] px-5 py-10 sm:px-8 lg:px-12 xl:px-16">
+    <section className="mx-auto w-full max-w-360 px-5 py-10 sm:px-8 lg:px-12 xl:px-16">
       <h2 className="mb-8 inline-block border-b border-neutral-300 pb-2 pr-10 font-display text-xl font-bold text-forest">
         Pilih Kategori Barang
       </h2>

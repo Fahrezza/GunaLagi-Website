@@ -7,7 +7,7 @@ export default function RekomendasiSection({ items, kataKunci, sectionRef, kartu
   return (
     <section
       ref={sectionRef}
-      className="mx-auto w-full max-w-[1440px] scroll-mt-20 px-5 pb-16 pt-4 sm:px-8 lg:px-12 xl:px-16"
+      className="mx-auto w-full max-w-360 scroll-mt-20 px-5 pb-16 pt-4 sm:px-8 lg:px-12 xl:px-16"
     >
       <div className="mb-8 flex items-end justify-between gap-4">
         <h2 className="border-b border-neutral-300 pb-2 pr-10 font-display text-xl font-bold text-forest">
