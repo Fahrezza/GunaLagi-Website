@@ -38,9 +38,9 @@ function Avatar({ foto, nama }) {
   );
 }
 
-function TombolChat() {
+function TombolChat({ ke }) {
   return (
-    <Link to="/pesan" className={`${dasar} ${gaya.garis}`}>
+    <Link to={ke} className={`${dasar} ${gaya.garis}`}>
       <IkonChat width={18} height={18} />
       Chat
     </Link>
@@ -51,6 +51,11 @@ export default function PermintaanCard({ permintaan, onUbahStatus, sibuk = false
   const { id, arah, status, barang, lawan, pesan, tawaran } = permintaan;
   const masuk = arah === "masuk";
   const peran = masuk ? "Pemohon" : "Pemilik";
+  const tujuanChat =
+  `/pesan?barang=${encodeURIComponent(barang.id)}` +
+  `&dengan=${encodeURIComponent(lawan.email || `contoh:${lawan.nama}`)}` +
+  `&nama=${encodeURIComponent(lawan.nama)}` +
+  `&kota=${encodeURIComponent(lawan.kota ?? "")}`;
 
   let aksi;
   if (masuk && status === "menunggu") {
@@ -72,7 +77,7 @@ export default function PermintaanCard({ permintaan, onUbahStatus, sibuk = false
         >
           Tolak
         </button>
-        <TombolChat />
+        <TombolChat ke={tujuanChat} />
       </>
     );
   } else if (!masuk && status === "menunggu") {
@@ -81,12 +86,12 @@ export default function PermintaanCard({ permintaan, onUbahStatus, sibuk = false
         <Link to={`/barang/${barang.id}`} className={`${dasar} ${gaya.gelap} flex-1`}>
           Lihat Barang
         </Link>
-        <TombolChat />
+        <TombolChat ke={tujuanChat} />
       </>
     );
   } else if (status === "diterima") {
     aksi = (
-      <Link to="/pesan" className={`${dasar} ${gaya.garis} flex-1`}>
+      <Link to={tujuanChat} className={`${dasar} ${gaya.garis} flex-1`}>
         Lihat chat
       </Link>
     );

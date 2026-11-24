@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, NavLink, useNavigate, useSearchParams } from "react-router-dom";
 import ActionButton from "./ActionButton.jsx";
 import ProfileMenu from "./ProfileMenu.jsx";
 import { IkonCari, IkonPlus } from "./Ikon.jsx";
 import { getSession } from "../services/authService.js";
+import { getJumlahBelumDibaca } from "../services/pesanService.js";
 
 const kelasMenu = ({ isActive }) =>
   isActive
@@ -42,6 +43,25 @@ export default function Navbar() {
   const [params] = useSearchParams();
   const [user] = useState(getSession);
   const awal = params.get("cari") ?? "";
+  const [belumDibaca, setBelumDibaca] = useState(0);
+
+// Saat backend siap, ganti polling ini dengan endpoint jumlah pesan belum dibaca.
+useEffect(() => {
+  if (!user) return;
+  let batal = false;
+  const muat = () =>
+    getJumlahBelumDibaca()
+      .then((n) => { if (!batal) setBelumDibaca(n); })
+      .catch(() => {});
+  muat();
+  const timer = setInterval(muat, 5000);
+  window.addEventListener("storage", muat);
+  return () => {
+    batal = true;
+    clearInterval(timer);
+    window.removeEventListener("storage", muat);
+  };
+}, [user]);
 
   // Sudah login: Beranda mengarah ke /beranda. Belum login: ke Beranda publik.
   const berandaPath = user ? "/beranda" : "/";
@@ -68,7 +88,17 @@ export default function Navbar() {
         <nav className="flex items-center gap-6 md:ml-6 md:gap-12 lg:ml-10 lg:gap-16" aria-label="Menu utama">
           {menu.map((m) => (
             <NavLink key={m.label} to={m.to} end className={kelasMenu}>
-              {m.label}
+              <span className="relative inline-block">
+                {m.label}
+                {m.to === "/pesan" && belumDibaca > 0 && (
+                  <span
+                    aria-label={`${belumDibaca} pesan belum dibaca`}
+                    className="absolute -right-4 -top-2 grid min-w-4 place-items-center rounded-full bg-lime-brand px-1 text-[10px] font-bold leading-4 text-neutral-950"
+                  >
+                    {belumDibaca > 99 ? "99+" : belumDibaca}
+                  </span>
+                )}
+              </span>
             </NavLink>
           ))}
         </nav>

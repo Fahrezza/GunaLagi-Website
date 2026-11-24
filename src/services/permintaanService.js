@@ -34,7 +34,7 @@ function sudutPandang(r, email) {
     dibuat: r.dibuat,
     diprosesPada: r.diprosesPada,
     barang: r.barang,
-    lawan: { nama: lawan.nama || "Pengguna", kota: lawan.kota || "-", foto: lawan.foto || "" },
+    lawan: {email: pemilikSaya ? r.pengirimEmail : r.pemilikEmail, nama: lawan.nama || "Pengguna", kota: lawan.kota || "-", foto: lawan.foto || "",},
     pesan: r.pesan || "",
     tawaran: r.tawaran ?? null,
   };

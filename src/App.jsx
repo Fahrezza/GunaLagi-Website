@@ -14,6 +14,7 @@ import Akun from "./pages/Akun";
 import EditProfil from "./pages/EditProfil";
 import RequestBarter from "./pages/RequestBarter";
 import PermintaanDonasi from "./pages/PermintaanDonasi";
+import Pesan from "./pages/Pesan";
 
 // Route protection
 import ProtectedRoute from "./components/ProtectedRoute.jsx";
@@ -85,11 +86,9 @@ export default function App() {
         element={terkunci(<BerandaAuth />)}
       />
 
-      <Route
-        path="/pesan"
-        element={terkunci(
-          <BelumDibuat judul="Halaman Pesan" />
-        )}
+      <Route 
+        path="/pesan" 
+        element={terkunci(<Pesan />)} 
       />
 
       <Route

@@ -23,7 +23,7 @@ export default function KartuAksi({ barang, donasi, milikSendiri }) {
   const warna = donasi
     ? "bg-lime-brand text-neutral-950 hover:bg-lime-brand-dark"
     : "bg-forest text-white hover:bg-neutral-900";
-  const tujuanPesan = `/pesan?dengan=${encodeURIComponent(barang.pemilikId ?? barang.pemilik)}`;
+  const tujuanPesan = `/pesan?barang=${barang.id}`;
   const tujuanAjukan = donasi
   ? `/barang/${barang.id}/minta`
   : `/barang/${barang.id}/barter`;
