@@ -11,12 +11,25 @@ export default function useForm(initialValues, validate) {
     setErrors((prev) => ({ ...prev, [name]: undefined }));
   };
 
-  const handleSubmit = (onValid) => (e) => {
-    e.preventDefault();
-    const found = validate(values);
-    setErrors(found);
-    if (Object.keys(found).length === 0) onValid(values);
-  };
+ const handleSubmit = (onValid) => (e) => {
+  e.preventDefault();
+
+  console.log("[FORM] Tombol submit terpanggil");
+
+  const found = validate(values);
+
+  console.log("[FORM] Hasil validasi:", found);
+
+  setErrors(found);
+
+  if (Object.keys(found).length === 0) {
+    console.log("[FORM] Validasi berhasil, menjalankan onValid");
+
+    onValid(values);
+  } else {
+    console.warn("[FORM] Validasi gagal:", Object.keys(found));
+  }
+};
 
   return { values, errors, handleChange, handleSubmit };
 }

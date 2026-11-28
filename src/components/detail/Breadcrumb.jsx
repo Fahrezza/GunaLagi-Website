@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import GatedLink from "../GatedLink.jsx";
 import { IkonPanahKanan } from "./IkonDetail.jsx";
 
 export default function Breadcrumb({ berandaPath, nama }) {
@@ -20,9 +19,9 @@ export default function Breadcrumb({ berandaPath, nama }) {
         </li>
         {pemisah}
         <li>
-          <GatedLink to="/jelajahi" perluLogin className={kelas}>
+          <Link to="/jelajahi" className={kelas}>
             Jelajahi
-          </GatedLink>
+          </Link>
         </li>
         {pemisah}
         <li aria-current="page" className="text-xs font-semibold text-neutral-950">

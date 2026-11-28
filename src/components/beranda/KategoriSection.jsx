@@ -11,7 +11,7 @@ const ikonKategori = {
 
 export default function KategoriSection() {
   return (
-    <section className="mx-auto w-full max-w-[1920px] px-5 py-12 sm:px-[4%] lg:px-[5%]">
+    <section className="mx-auto w-full max-w-360 px-5 py-10 sm:px-8 lg:px-12 xl:px-16">
       <h2 className="mb-8 inline-block border-b border-neutral-300 pb-2 pr-10 font-display text-xl font-bold text-forest">
         Pilih Kategori Barang
       </h2>
@@ -22,7 +22,7 @@ export default function KategoriSection() {
           return (
             <Link
               key={k.slug}
-              to={`/kategori/${k.slug}`}
+              to={`/jelajahi?kategori=${k.slug}`}
               className="flex h-full flex-col items-center justify-center rounded-xl border border-neutral-200 bg-neutral-50 px-6 py-8 text-center shadow-md transition hover:border-forest hover:bg-lime-soft focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest"
             >
               <Ikon width={32} height={32} className="text-forest" />

@@ -5,14 +5,19 @@ import InputField from "../components/InputField.jsx";
 import Button from "../components/Button.jsx";
 import GoogleButton from "../components/GoogleButton.jsx";
 import useForm from "../hooks/useForm.js";
-import { register, loginWithGoogle } from "../services/authService.js";
+import { register } from "../services/authService.js";
 
 const validate = (v) => {
   const e = {};
   if (!v.nama.trim()) e.nama = "Nama lengkap wajib diisi";
   if (!/^\S+@\S+\.\S+$/.test(v.email)) e.email = "Format email tidak valid";
-  if (!v.username.trim()) e.username = "Username wajib diisi";
-  if (v.password.length < 6) e.password = "Password minimal 6 karakter";
+  if (!/^[a-zA-Z0-9._-]{3,30}$/.test(v.username)) {
+  e.username = "Username harus 3-30 karakter dan hanya berisi huruf, angka, titik, _ atau -";
+}
+
+if (v.password.length < 8) {
+  e.password = "Password minimal 8 karakter";
+}
   if (v.konfirmasi !== v.password) e.konfirmasi = "Konfirmasi password tidak sama";
   if (!v.setuju) e.setuju = "Anda harus menyetujui Syarat & Ketentuan";
   return e;
@@ -29,20 +34,23 @@ export default function Register() {
     validate
   );
 
-  const onValid = (v) => {
-    const result = register(v);
-    if (!result.ok) {
-      setFormError(result.error);
-      return;
-    }
-    // Setelah daftar, ke Login dengan tujuan awal yang sama.
-    navigate("/login", { replace: true, state: location.state });
-  };
+ const onValid = async (v) => {
+  setFormError("");
 
-  const handleGoogle = (user) => {
-    loginWithGoogle(user);
-    navigate(tujuan, { replace: true });
-  };
+  const result = await register(v);
+
+  if (!result.ok) {
+    setFormError(result.error);
+    return;
+  }
+
+  navigate("/login", {
+    replace: true,
+    state: location.state,
+  });
+};
+
+ 
 
   return (
     <AuthCard title="Daftar akun baru">
@@ -70,7 +78,9 @@ export default function Register() {
 
         <div className="mt-5 space-y-2">
           <Button type="submit">Daftar Sekarang</Button>
-          <GoogleButton onSuccess={handleGoogle}>Sign Up with Google</GoogleButton>
+          <GoogleButton disabled>
+  Sign Up with Google
+</GoogleButton>
         </div>
       </form>
 

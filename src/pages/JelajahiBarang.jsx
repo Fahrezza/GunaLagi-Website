@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import Navbar from "../components/Navbar.jsx";
 import BarangCard from "../components/BarangCard.jsx";
@@ -35,7 +35,20 @@ function normalisasiKategori(barang) {
 export default function JelajahiBarang() {
   const [params, setParams] = useSearchParams();
   const [kata, setKata] = useState(params.get("cari") ?? "");
-  const [aktif, setAktif] = useState("semua");
+  // Kategori aktif dibaca dari alamat (?kategori=elektronik), jadi bisa dibuka langsung dari Beranda.
+  const dariAlamat = params.get("kategori");
+  const aktif = kategoriFilter.some((k) => k.slug === dariAlamat) ? dariAlamat : "semua";
+  const setAktif = (slug) => {
+    const baru = new URLSearchParams(params);
+    if (slug === "semua") baru.delete("kategori");
+    else baru.set("kategori", slug);
+    setParams(baru, { replace: true });
+  };
+
+  // Halaman bisa dibuka dari bagian tengah Beranda, jadi mulai dari atas.
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const [urutan, setUrutan] = useState("terbaru");
   const [filterBuka, setFilterBuka] = useState(false);
   const [cara, setCara] = useState("semua");
@@ -204,9 +217,9 @@ export default function JelajahiBarang() {
 
         <section aria-label="Daftar barang" className="mt-7">
           {hasil.length ? (
-            <div className="grid grid-cols-1 justify-items-center gap-x-3 gap-y-5 sm:grid-cols-2 lg:grid-cols-3 sm:gap-x-6 sm:gap-y-8 lg:gap-x-10">
+            <div className="grid grid-cols-1 justify-items-center gap-x-3 gap-y-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 sm:gap-x-6 sm:gap-y-8 lg:gap-x-10">
               {hasil.map((item) => (
-                <div key={item.id} className="w-full max-w-[280px]">
+                <div key={item.id} className="w-full max-w-[320px]">
                   <BarangCard barang={item} />
                 </div>
               ))}
